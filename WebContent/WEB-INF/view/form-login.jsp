@@ -3,7 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url value="/enter" var="enterLinkFilter"/>
+<c:url value="enter" var="enterLinkFilter"/>
 
 <!DOCTYPE html>
 <html>

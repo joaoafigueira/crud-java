@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.joao.simplecrudjava.model.Company;
+
 import br.com.joao.simplecrudjava.model.DataBank;
 import br.com.joao.simplecrudjava.model.User;
 
@@ -17,21 +17,19 @@ public class Login implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-
-		DataBank dataBank = new DataBank();
-		User user = dataBank.userExist(email, password);
-
-		if (user != null) {
+		String  email = request.getParameter("email");
+		String  password = request.getParameter("password");
 		
-			HttpSession session = request.getSession();
-
-			session.setAttribute("userLogged", user);		
-			return "redirect:enter?action=SimplePageForm";
+		DataBank bank = new DataBank();
+		User user = bank.userExist(email, password);
+		
+		if(user!=null) {
 			
-		} else {
-			return "redirect:enter?action=LoginForm";
+			HttpSession session = request.getSession();
+			session.setAttribute("userLogged", user);
+			return "redirect:enter?action=SimplePageForm";
+		}else {
+			return "redirect:entrada?acao=LoginForm";
 		}
 
 	}
