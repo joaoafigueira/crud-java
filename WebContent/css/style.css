@@ -45,3 +45,23 @@ button {
 	width: 100px;
 	height: 30px;
 }
+
+
+.main-title{
+	margin-top: 235px;
+	margin-left:550px;
+	
+}
+
+#logout{
+	text-decoration: none;
+	color:black;
+	position: relative;
+	margin-left:620px;
+}
+
+#logout:hover {
+	transition: all 0.3s ease 0s;
+	color: red;
+}
+
