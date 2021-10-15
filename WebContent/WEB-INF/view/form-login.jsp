@@ -3,7 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url value="enter" var="enterLinkFilter"/>
+<c:url value="/enter" var="enterLinkFilter"/>
 
 <!DOCTYPE html>
 <html>
@@ -25,8 +25,9 @@
 	 
 	  <input type="hidden" name="action" value="Login"/>
 	  <button class="input-button" type="submit">Login</button>
+	 
 	   </div>
-	
+	 <a  class="page-links" href="/simple-crud-java/enter?action=NewCompanyForm">Register</a>
 	
 	
 	</form>

@@ -27,7 +27,7 @@ public class ControllerFilter implements Filter {
 
 		String className = "br.com.joao.simplecrudjava.action." + paramAction;
 
-		String name;
+		String name=null;
 
 		try {
 			Class class1 = Class.forName(className);

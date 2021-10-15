@@ -5,48 +5,41 @@ import java.util.List;
 
 public class DataBank {
 	
-	private static  List<Company> companyList = new ArrayList<>();
-	private static List<User> userLists = new ArrayList<>();
+	private static List<Company> companyLists = new ArrayList<>();
 	private static Integer idKey = 1;
 	
 	
 	static {
 		
-		Company company = new Company();
-		company.setId(idKey++);
-		company.setCompanyName("Facebook");
 		
-
-		Company company2 = new Company();
-		company2.setId(idKey++);
-		company2.setCompanyName("Amazon");
+		Company user = new Company();
 		
-		companyList.add(company);
-		companyList.add(company2);
-		
-		
-		User user = new User();
+		user.setId(idKey++);
 		user.setEmail("facebook@gmail.com");
 		user.setPassword("12345");
-		
+		user.setCompanyName("facebook");
 		
 
-		User user2 = new User();
+		Company user2 = new Company();
+		
+		user2.setId(idKey++);
 		user2.setEmail("amazon@gmail.com");
 		user2.setPassword("12345");
+		user2.setCompanyName("Amazon");
 		
-		userLists.add(user);
-		userLists.add(user2);
+		
+		companyLists.add(user);
+		companyLists.add(user2);
 			
 	}
 	
 	
-	public User userExist(String email, String password) {
+	public Company userExist(String email, String password) {
 		
-		for(User user: userLists) {
-			if(user.validateLogin(email, password)) {
+		for(Company company:companyLists) {
+			if(company.validateCompany(email, password)) {
 				
-				return user;
+				return company;
 			}
 		}
 		
@@ -54,8 +47,14 @@ public class DataBank {
 	}
 	
 	
+	public List<Company> getCompany(){
+		return DataBank.companyLists;
+	}
 	
-	
+	public void addCompany(Company company) {
+		company.setId(DataBank.idKey++);
+		DataBank.companyLists.add(company);
+	}
 	
 	
 

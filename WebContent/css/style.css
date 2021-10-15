@@ -13,6 +13,19 @@ body {
 	margin: 0 auto;
 }
 
+#home-link{
+	position: relative;
+	left: -190px;
+	top: 50px;
+	text-decoration: none;
+	color: black;
+}
+
+#home-link:hover{
+	transition: all 0.3s ease 0s;
+	color: red;
+}
+
 header h1 {
 	font-size: 2em;
 	display: inline-block;
@@ -40,8 +53,41 @@ button {
 }
 
 .input-button {
-	margin-left: 38px;
+	margin-left: 70px;
 	font-size: 22px;
 	width: 100px;
 	height: 30px;
 }
+
+.page-links{
+	position: relative;
+	color: black;
+	text-decoration: none;
+	top:15px;
+	left: 550px;
+}
+
+.page-links:hover{
+	transition: all 0.3s ease 0s;
+	color: red;
+}
+
+
+.main-title{
+	margin-top: 235px;
+	margin-left:450px;
+	
+}
+
+#logout{
+	text-decoration: none;
+	color:black;
+	position: relative;
+	margin-left:620px;
+}
+
+#logout:hover {
+	transition: all 0.3s ease 0s;
+	color: red;
+}
+
