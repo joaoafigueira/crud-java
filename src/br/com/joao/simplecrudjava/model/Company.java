@@ -1,37 +1,56 @@
 package br.com.joao.simplecrudjava.model;
 
-import java.util.Date;
-
 public class Company {
-	
-	private Integer id;
+
+	private String email;
+	private String password;
 	private String companyName;
-	private Date openDate = new Date();
-	
-	
-	
+	private Integer id;
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getCompanyName() {
 		return companyName;
 	}
+
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	public Date getOpenDate() {
-		return openDate;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setOpenDate(Date openDate) {
-		this.openDate = openDate;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	
-	
-	
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean validateCompany(String email, String password) {
+
+		if (!this.email.equals(email)) {
+			return false;
+		}
+
+		if (!this.password.equals(password)) {
+			return false;
+		}
+
+		return true;
+
+	}
 
 }

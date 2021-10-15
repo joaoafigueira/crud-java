@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.joao.simplecrudjava.model.Company;
 import br.com.joao.simplecrudjava.model.DataBank;
-import br.com.joao.simplecrudjava.model.User;
+import br.com.joao.simplecrudjava.model.Company;
 
 public class Login implements Action {
 
@@ -22,16 +21,18 @@ public class Login implements Action {
 		String password = request.getParameter("password");
 
 		DataBank bank = new DataBank();
-		User user = bank.userExist(email, password);
+		Company company = bank.userExist(email, password);
 
-		if (user != null) {
+		if (company != null) {
 
 			HttpSession session = request.getSession();
 
-			session.setAttribute("userLogged", user);
+			session.setAttribute("companyLogged", company);
+
 			return "redirect:enter?action=SimplePageForm";
 		} else {
-			return "redirect:entrada?acao=LoginForm";
+
+			return "redirect:enter?action=LoginForm";
 		}
 
 	}

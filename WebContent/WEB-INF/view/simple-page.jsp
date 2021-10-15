@@ -11,7 +11,7 @@
 <body>
 
 
-	<h1 class="main-title">Welcome...${userLogged.companyName}</h1>
+	<h1 class="main-title">Welcome...${companyLogged.companyName}</h1>
 
  <c:import url="parcial-logout.jsp"/>
 
