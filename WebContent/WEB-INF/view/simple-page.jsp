@@ -10,7 +10,8 @@
 </head>
 <body>
 
-	<h1 class="main-title">Welcome...</h1>
+
+	<h1 class="main-title">Welcome...${userLogged.companyName}</h1>
 
  <c:import url="parcial-logout.jsp"/>
 

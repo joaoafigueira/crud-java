@@ -28,12 +28,14 @@ public class DataBank {
 		User user = new User();
 		user.setEmail("facebook@gmail.com");
 		user.setPassword("12345");
-		
+		user.setCompanyName("facebook");
 		
 
 		User user2 = new User();
 		user2.setEmail("amazon@gmail.com");
 		user2.setPassword("12345");
+		user2.setCompanyName("Amazon");
+		
 		
 		userLists.add(user);
 		userLists.add(user2);
@@ -54,7 +56,9 @@ public class DataBank {
 	}
 	
 	
-	
+	public List<Company> getCompany(){
+		return DataBank.companyList;
+	}
 	
 	
 	
