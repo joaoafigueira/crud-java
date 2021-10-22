@@ -25,10 +25,11 @@ public class FilterAutorization implements Filter {
 		String actionParam = request.getParameter("action");
 		
 		HttpSession session = request.getSession();
-		boolean usernotLogged = (session.getAttribute("companyLogged") == null);
-		boolean protectAction = !(actionParam.equals("Login") || actionParam.equals("LoginForm") || actionParam.equals("NewCompanyForm") || actionParam.equals("NewCompany")); //todas as ações que não login e login form são protegidas
+		boolean userNotLogged = (session.getAttribute("companyLogged") == null);
+		boolean adminNotLogged = (session.getAttribute("adminLogged") == null);
+		boolean protectAction = !(actionParam.equals("Login") || actionParam.equals("LoginForm") || actionParam.equals("NewCompanyForm") || actionParam.equals("NewCompany") || actionParam.equals("AdminForm") || actionParam.equals("AdminLogin")); //every action that is not this are protected
 		
-		if(protectAction && usernotLogged) {
+		if(protectAction && userNotLogged && adminNotLogged) {
 			response.sendRedirect("enter?action=LoginForm");
 			return;
 		}

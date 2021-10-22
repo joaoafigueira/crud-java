@@ -8,12 +8,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.joao.simplecrudjava.action.Action;
-
 
 public class ControllerFilter implements Filter {
 
@@ -27,7 +26,7 @@ public class ControllerFilter implements Filter {
 
 		String className = "br.com.joao.simplecrudjava.action." + paramAction;
 
-		String name=null;
+		String name = null;
 
 		try {
 			Class class1 = Class.forName(className);
@@ -44,9 +43,17 @@ public class ControllerFilter implements Filter {
 
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + adressType[1]);
 			rd.forward(request, response);
-
 		} else {
-			response.sendRedirect("enter?action=SimplePageForm");
+			HttpSession session = request.getSession();
+			boolean sessionUserIsValid = session.getAttribute("companyLogged") == null;
+			boolean sessionAdminIsValid = session.getAttribute("adminLogged") == null;
+
+			if (sessionUserIsValid && sessionAdminIsValid == false) {
+				response.sendRedirect(adressType[1]);
+
+			} else {
+				response.sendRedirect("enter?action=SimplePageForm");
+			}
 		}
 
 	}

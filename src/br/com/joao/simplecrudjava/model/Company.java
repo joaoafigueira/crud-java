@@ -3,6 +3,8 @@ package br.com.joao.simplecrudjava.model;
 public class Company {
 
 	private String email;
+	private String adminEmail;
+	private String adminPassword;
 	private String password;
 	private String companyName;
 	private Integer id;
@@ -31,6 +33,22 @@ public class Company {
 		this.email = email;
 	}
 
+	public String getAdminEmail() {
+		return adminEmail;
+	}
+
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
+	}
+
+	public String getAdminPassword() {
+		return adminPassword;
+	}
+
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -39,7 +57,7 @@ public class Company {
 		this.password = password;
 	}
 
-	public boolean validateCompany(String email, String password) {
+	public boolean validateLoginUser(String email, String password) {
 
 		if (!this.email.equals(email)) {
 			return false;
@@ -52,5 +70,21 @@ public class Company {
 		return true;
 
 	}
+	
+	
+	public boolean validateLoginAdmin(String email, String password) {
+
+		if (!this.adminEmail.equals(email)) {
+			return false;
+		}
+
+		if (!this.adminPassword.equals(password)) {
+			return false;
+		}
+
+		return true;
+
+	}
+	
 
 }
