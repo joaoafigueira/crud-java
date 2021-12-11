@@ -1,9 +1,9 @@
 package br.com.joao.simplecrudjava.filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -27,16 +27,20 @@ public class FilterAutorization implements Filter {
 		HttpSession session = request.getSession();
 		boolean userNotLogged = (session.getAttribute("companyLogged") == null);
 		boolean adminNotLogged = (session.getAttribute("adminLogged") == null);
-		boolean protectAction = !(actionParam.equals("Login") || actionParam.equals("LoginForm") || actionParam.equals("NewCompanyForm") || actionParam.equals("NewCompany") || actionParam.equals("AdminForm") || actionParam.equals("AdminLogin")); //every action that is not this are protected
-		
-		if(protectAction && userNotLogged && adminNotLogged) {
+        boolean protectAction = !(actionParam.equals("Login") || actionParam.equals("LoginForm") || actionParam.equals("NewCompanyForm") || actionParam.equals("NewCompany") || actionParam.equals("AdminForm") || actionParam.equals("AdminLogin")); //every action that is not this are protected
+
+        
+        
+		if(protectAction && userNotLogged && adminNotLogged ){
 			response.sendRedirect("enter?action=LoginForm");
 			return;
 		}
 		
+			chain.doFilter(request, response);
 		
 		
-		chain.doFilter(request, response);
+		
+		
 	}
 
 	

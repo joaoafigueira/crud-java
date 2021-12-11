@@ -1,6 +1,7 @@
 package br.com.joao.simplecrudjava.filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
@@ -28,7 +29,7 @@ public class ControllerFilter implements Filter {
 		String name = null;
 
 		try {
-			Class class1 = Class.forName(className);
+   			Class class1 = Class.forName(className);
 			Action action = (Action) class1.newInstance();
 			name = action.execute(request, response);
 
@@ -36,7 +37,7 @@ public class ControllerFilter implements Filter {
 
 			throw new ServletException(e);
 		}
-
+        
 		String[] adressType = name.split(":");
 		if (adressType[0].equals("forward")) {
 
@@ -44,15 +45,23 @@ public class ControllerFilter implements Filter {
 			rd.forward(request, response);
 		} else {
 			HttpSession session = request.getSession();
-			boolean sessionUserIsValid = session.getAttribute("companyLogged") == null;
-			boolean sessionAdminIsValid = session.getAttribute("adminLogged") == null;
-
-			if (sessionUserIsValid && sessionAdminIsValid == false) {
+			boolean sessionUserIsValid = (session.getAttribute("companyLogged") == null);
+			boolean sessionAdminIsValid = (session.getAttribute("adminLogged") == null);
+			
+			System.out.println(sessionAdminIsValid);
+			System.out.println(sessionUserIsValid);
+			System.out.println(adressType[1]);
+			if(sessionAdminIsValid) {		
+				System.out.println(adressType[1]);
 				response.sendRedirect(adressType[1]);
-
-			} else {
-				response.sendRedirect("enter?action=SimplePageForm");
+			}else if(sessionUserIsValid) {
+				System.out.println(adressType[1]);
+				response.sendRedirect(adressType[1]);
+       		}else {				
+				response.sendRedirect("enter?action=LoginForm");
 			}
+			
+			
 		}
 
 	}

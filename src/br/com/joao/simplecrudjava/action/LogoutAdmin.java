@@ -5,16 +5,18 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class SimplePageForm implements Action {
+public class LogoutAdmin implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
 		
-		
-		
-		return "forward:simple-page.jsp";
+		session.invalidate();
+		return "redirect:enter?action=AdminForm";
 	}
 
 }

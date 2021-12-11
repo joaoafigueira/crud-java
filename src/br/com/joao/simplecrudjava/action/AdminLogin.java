@@ -28,7 +28,7 @@ public class AdminLogin implements Action {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("adminLogged", admin);
-			return "redirect:enter?action=ManageCompanyForm";
+			return "redirect:enter?action=ListCompany";
 		} else {
 			return "redirect:enter?action=AdminForm";
 		}

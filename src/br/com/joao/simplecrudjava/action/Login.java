@@ -31,7 +31,6 @@ public class Login implements Action {
 
 			return "redirect:enter?action=SimplePageForm";
 		} else {
-
 			return "redirect:enter?action=LoginForm";
 		}
 
