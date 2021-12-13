@@ -6,15 +6,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SimplePageForm implements Action {
+import br.com.joao.simplecrudjava.model.DataBank;
+
+public class CompanyRemove implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String paramId = request.getParameter("id");
+		Integer id = Integer.valueOf(paramId);
+		
+		DataBank data =  new DataBank();
+		data.removeCompany(id);
 		
 		
-		return "forward:simple-page.jsp";
+		return "redirect:enter?action=ListCompany";
 	}
 
 }

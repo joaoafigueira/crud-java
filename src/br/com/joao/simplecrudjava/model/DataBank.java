@@ -1,6 +1,7 @@
 package br.com.joao.simplecrudjava.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class DataBank {
@@ -16,7 +17,7 @@ public class DataBank {
 		user.setId(idKey++);
 		user.setEmail("facebook@gmail.com");
 		user.setPassword("12345");
-		user.setCompanyName("facebook");
+		user.setCompanyName("Facebook");
 
 		Company user2 = new Company();
 
@@ -34,6 +35,16 @@ public class DataBank {
 		companyLists.add(user);
 		companyLists.add(user2);
 
+	}
+
+	public Company searchForCompanyId(Integer id) {
+
+		for (Company company : companyLists) {
+			if (company.getId() == id) {
+				return company;
+			}
+		}
+		return null;
 	}
 
 	public Company userExist(String email, String password) {
@@ -63,7 +74,23 @@ public class DataBank {
 	public List<Company> getCompany() {
 		return DataBank.companyLists;
 	}
-
+	
+	public void removeCompany(Integer id) {
+	
+		Iterator<Company> iterator = companyLists.iterator();
+		
+		while(iterator.hasNext()){
+			Company company = iterator.next();
+			
+			if(company.getId() == id) {
+				iterator.remove();
+			} 
+			
+		}
+	}
+	
+	
+	
 	public void addCompany(Company company) {
 		company.setId(DataBank.idKey++);
 		DataBank.companyLists.add(company);

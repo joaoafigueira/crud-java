@@ -1,13 +1,13 @@
 package br.com.joao.simplecrudjava.model;
 
 public class Company {
-
+	
+	private Integer id;
 	private String email;
-	private String adminEmail;
-	private String adminPassword;
 	private String password;
 	private String companyName;
-	private Integer id;
+	private String adminEmail;
+	private String adminPassword;
 
 	public Integer getId() {
 		return id;
@@ -56,6 +56,7 @@ public class Company {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
 	public boolean validateLoginUser(String email, String password) {
 
