@@ -48,11 +48,7 @@ public class ControllerFilter implements Filter {
 			boolean sessionUserIsValid = (session.getAttribute("companyLogged") == null);
 			boolean sessionAdminIsValid = (session.getAttribute("adminLogged") == null);
 			
-			System.out.println(sessionAdminIsValid);
-			System.out.println(sessionUserIsValid);
-			System.out.println(adressType[1]);
 			if(sessionAdminIsValid) {		
-				System.out.println(adressType[1]);
 				response.sendRedirect(adressType[1]);
 			}else if(sessionUserIsValid) {
 				System.out.println(adressType[1]);

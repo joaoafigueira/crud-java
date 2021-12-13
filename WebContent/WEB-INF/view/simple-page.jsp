@@ -13,10 +13,10 @@
 <title>Simple page</title>
 
 </head>
-<body onload="">
+<body>
    
+<%response.setHeader("Cache-control", "no-store, must-revalidate"); %> 
    
-       
 
 	<h1 class="main-title">Welcome...${companyLogged.companyName}</h1>
 

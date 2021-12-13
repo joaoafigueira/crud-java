@@ -17,7 +17,7 @@ public class DataBank {
 		user.setId(idKey++);
 		user.setEmail("facebook@gmail.com");
 		user.setPassword("12345");
-		user.setCompanyName("facebook");
+		user.setCompanyName("Facebook");
 
 		Company user2 = new Company();
 
@@ -74,7 +74,7 @@ public class DataBank {
 	public List<Company> getCompany() {
 		return DataBank.companyLists;
 	}
-
+	
 	public void removeCompany(Integer id) {
 	
 		Iterator<Company> iterator = companyLists.iterator();

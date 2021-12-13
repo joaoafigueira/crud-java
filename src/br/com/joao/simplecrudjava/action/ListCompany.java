@@ -20,8 +20,11 @@ public class ListCompany implements Action {
 		
 		DataBank bank = new DataBank();
 		List<Company> companyList = bank.getCompany();
-		
+        
+        
 		request.setAttribute("companys", companyList);
+		
+		
 		return "forward:manage-company.jsp";
 	}
 
